@@ -1,0 +1,16 @@
+{
+  "name": "ejercicio_automation_lista",
+  "version": "1.0.0",
+  "description": "Prueba de Cy con lista, agregar, quitar y editar",
+  "main": "index.js",
+  "scripts": {
+    "test-chrome": "npx cypress run --browser chrome",
+    "test-firefox": "npx cypress run --browser firefox"
+  },
+  "author": "Zampaglione Gaston",
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^7.4.0"
+  }
+}
+

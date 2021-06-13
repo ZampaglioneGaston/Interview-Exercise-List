@@ -1,0 +1,47 @@
+        cy.fixture('PageObj').then(pageObj =>{
+            cy.fixture('Parameters').then(par=>{
+                cy.get('#footer').then(($footer) => {
+
+                    if ($footer.is(":visible")) {
+
+                        cy.log('IF path')
+                        cy.get('#todo-count').then(($el1) =>{
+                            const prev = parseFloat($el1.text())
+                            cy.log(prev)
+        
+                            cy.get(pageObj.addItem).should('be.visible').type(par.itemToAdd).type('{enter}');
+                            cy.get(pageObj.listItem).last().should(($item) => {
+                                const text = $item.text();
+                                expect(text).to.contain(par.itemToAdd);
+                            })
+                            cy.get(pageObj.countItem).invoke('text').then(parseFloat).should('be.gt', prev)
+                        })
+
+                    } else {
+
+                        cy.log($footer.length + 'Else path')
+                        const prev = 0
+                        cy.log(prev)
+
+                        cy.get(pageObj.addItem).should('be.visible').type(par.itemToAdd).type('{enter}');
+                        cy.get(pageObj.listItem).last().should(($item) => {
+                            const text = $item.text();
+                            expect(text).to.contain(par.itemToAdd);
+                        })
+                        cy.get(pageObj.countItem).invoke('text').then(parseFloat).should('be.gt', prev)
+        
+
+                        cy.wait(2000)
+
+                    }
+                })
+    
+            })
+            /*cy.get(pageObj.list).find('.view').each(($el, i) =>{
+                cont = i + 1;
+                cy.log(cont);
+                cy.wrap(cont)
+            })
+            cy.get(pageObj.countItem).invoke('text').then(parseFloat).should('be.eql', prev);*/
+        })
+    }) 

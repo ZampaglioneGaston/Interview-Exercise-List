@@ -1,0 +1,15 @@
+{
+  "addItem"   : "#new-todo",
+  "list"      : "#todo-list",
+  "listItem"  : "#todo-list label",
+
+  "countItem" : "#todo-count",
+  "footer"    :"#footer",
+
+  "editItem"  : ".editing > .edit",
+
+  "todoCount" : "[strong]",
+  "deleteBtn" : ".destroy",
+
+  "doneBtn"   : ".toggle"
+}
